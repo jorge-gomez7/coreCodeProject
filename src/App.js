@@ -1,23 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import CompShowToDos from './ToDos/ShowToDos';
+import CompCreateToDo from './ToDos/CreateToDo';
+import CompUpdateToDo from './ToDos/UpdateToDo';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img src={logo} className="App-logo" alt="logo" />      
       </header>
+      <BrowserRouter>
+        <Routes>
+            <Route path='/' element={<CompShowToDos/>}/>
+            <Route path='/todo' element={<CompCreateToDo/>}/>
+            <Route path='/todo/:id' element={<CompUpdateToDo/>}/>
+        </Routes>
+      </BrowserRouter>      
     </div>
   );
 }
